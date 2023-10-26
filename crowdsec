@@ -1,0 +1,18 @@
+!/sbin/openrc-run
+# Copyright 2023 Allaert "kneusarius" Euser
+
+description="Crowdsec Daemon"
+command="/usr/local/bin/crowdsec"
+command_args="-c /etc/crowdsec/config.yaml"
+pidfile="/run/crowdsec.pid"
+
+depend() {
+	provide crowdsec
+        use net
+        after logger
+}
+
+start_pre() {
+	/usr/local/bin/crowdsec -c /etc/crowdsec/config.yaml -t -error
+}
+

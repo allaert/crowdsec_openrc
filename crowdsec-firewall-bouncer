@@ -1,0 +1,17 @@
+!/sbin/openrc-run
+# Copyright 2023 Allaert "kneusarius" Euser
+
+description="Crowdsec Firewall Bouncer"
+command="/usr/local/bin/crowdsec-firewall-bouncer"
+command_args="-c /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml"
+pidfile="/run/crowdsec-firewall-bouncer.pid"
+
+depend() {
+        use crowdsec
+        after logger
+}
+
+start_pre() {
+	/usr/local/bin/crowdsec-firewall-bouncer -c /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml -t
+}
+
