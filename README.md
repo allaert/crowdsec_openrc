@@ -3,6 +3,7 @@
 Usage:
 
 Tested on Gentoo
+
 Copy both crowdsec and crowdsec-firewall-bouncer to `/etc/init.d/`
 
 Add both crowdsec and crowdsec-firewall-bouncer to the default runlevel
